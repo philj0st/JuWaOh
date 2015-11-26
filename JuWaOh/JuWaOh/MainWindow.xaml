@@ -7,6 +7,46 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Card Type:"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Title:"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Level:"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Picture:"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Type:"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Description"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="ATK / DEF"/>
+        <!-- Labels end
+        ******************
+        Controls Start -->
+        <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+            <!--ComboBoxItems generated in code-->
+        </ComboBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <!--slider min and max values added from config file-->
+        <Slider Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></Slider>
+        <Button Grid.Row="3" Grid.Column="1"></Button>
+        <TextBox Grid.Row="3" Grid.Column="2"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="1"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="2"></TextBox>
+        <!--{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=RowDefinitions.Count, Mode=OneWay} to bind them dynamically-->
+        <GridSplitter Grid.Column="3" Grid.RowSpan="8" Width="5" HorizontalAlignment="Stretch"/>
+        <Canvas Width="200" Height="200" Grid.Row="0" Grid.RowSpan="8" Grid.Column="4"></Canvas>
     </Grid>
 </Window>

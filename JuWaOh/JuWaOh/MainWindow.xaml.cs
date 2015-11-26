@@ -22,7 +22,7 @@ namespace JuWaOh
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
     }
 }
