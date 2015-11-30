@@ -25,17 +25,12 @@ namespace JuWaOh.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>Element1</string>
-  <string>Element2</string>
-  <string>Element3</string>
-  <string>Element4</string>
-  <string>Element5</string>
-</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection elements {
+        [global::System.Configuration.DefaultSettingValueAttribute("<elements>\r\n\t<element imgPath=\"asset/elements/nature.png\">Nature</element>\r\n\t<ele" +
+            "ment imgPath=\"asset/elements/participation.png\">Participation</element>\r\n</eleme" +
+            "nts>")]
+        public string elements {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["elements"]));
+                return ((string)(this["elements"]));
             }
             set {
                 this["elements"] = value;

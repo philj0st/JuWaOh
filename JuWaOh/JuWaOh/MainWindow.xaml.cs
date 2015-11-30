@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Xml;
 
 namespace JuWaOh
 {
@@ -22,7 +13,27 @@ namespace JuWaOh
     {
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            elementComboBox.ItemsSource = createOptionsFromSettings();
+            //set a default selection
+            elementComboBox.SelectedIndex = 0;
+        }
+
+        private List<ComboBoxItem> createOptionsFromSettings()
+        {
+            List<ComboBoxItem> options = new List<ComboBoxItem>();
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(Properties.Settings.Default.elements);
+            XmlNodeList elements = xml.SelectNodes("elements/element");
+            //create ComboBoxItems for every <element> node
+            foreach (XmlNode element in elements)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = element.InnerText;
+                item.Tag = element.Attributes["imgPath"];
+                options.Add(item);
+            }
+            return options;
         }
     }
 }
