@@ -12,7 +12,7 @@ namespace JuWaOh
     {
         private String _cardType;
         private String _title;
-        private String _principle;
+        private String _elementImgPath;
         private Int16 _tribute;
         private String _imagePath;
         private String _description;
@@ -39,12 +39,12 @@ namespace JuWaOh
             }
         }
 
-        public String Principle
+        public String ElementImgPath
         {
-            get { return _principle; }
+            get { return _elementImgPath; }
             set
             {
-                _principle = value;
+                _elementImgPath = value;
                 OnPropertyChanged("Principle");
             }
         }
@@ -101,7 +101,7 @@ namespace JuWaOh
         {
             this.CardType = cardType;
             this.Title = title;
-            this.Principle = principle;
+            this.ElementImgPath = principle;
             this.ImagePath = imagePath;
             this.Description = description;
             this.Atk = atk;

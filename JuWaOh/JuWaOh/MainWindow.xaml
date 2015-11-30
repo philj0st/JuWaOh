@@ -16,6 +16,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -24,33 +26,61 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Card Type:"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Title:"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Element:"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Level:"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Picture:"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Type:"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Description"/>
-        <Label Grid.Row="7" Grid.Column="0" Content="ATK / DEF"/>
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" x:Name="dockPanel" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Card">
+                    <MenuItem Header="_New" Command="New">
+                        <MenuItem.Icon>
+                            <Image Height="22" Source="assets/add.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Open" Command="Open">
+                        <MenuItem.Icon>
+                            <Image Height="22" Source="assets/file.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Save" Click="MenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Height="22" Source="assets/diskette.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Edit"/>
+                <MenuItem Header="_Help"/>
+            </Menu>
+        </DockPanel>
+        <Label Grid.Row="1" Grid.Column="0" Content="Card Type:"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Title:"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Element:"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Level:"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Picture:"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Type:"/>
+        <Label Grid.Row="7" Grid.Column="0" Content="Description"/>
+        <Label Grid.Row="8" Grid.Column="0" Content="ATK / DEF"/>
         <!-- Labels end
         ******************
         Controls Start -->
-        <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+        <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <!--ComboBoxItems cardType generated in code-->
         </ComboBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
-        <ComboBox x:Name="elementComboBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <ComboBox x:Name="elementComboBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
             <!--ComboBoxItems elements generated in code-->
         </ComboBox>
         <!--slider min and max values added from config file-->
-        <Slider Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" IsSnapToTickEnabled="True"></Slider>
-        <Button Grid.Row="4" Grid.Column="1"></Button>
-        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
-        <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" AcceptsReturn="True" TextWrapping="Wrap"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <Slider Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" IsSnapToTickEnabled="True"></Slider>
+        <Button x:Name="loadPictureBtn" Grid.Row="5" Grid.Column="1" Content="load" Click="loadPictureBtn_Click"></Button>
+        <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" AcceptsReturn="True" TextWrapping="Wrap"/>
         <TextBox Grid.Row="8" Grid.Column="1"></TextBox>
+        <TextBox Grid.Row="8" Grid.Column="2"></TextBox>
         <!--{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=RowDefinitions.Count, Mode=OneWay} to bind them dynamically-->
-        <GridSplitter Grid.Column="3" Grid.RowSpan="8" Width="5" HorizontalAlignment="Stretch"/>
-        <Canvas Width="200" Height="200" Grid.Row="0" Grid.RowSpan="8" Grid.Column="4"></Canvas>
+        <GridSplitter Grid.Row="1" Grid.Column="3" Grid.RowSpan="8" Width="5" HorizontalAlignment="Stretch"/>
+        <Border Width="200" Height="200" Grid.Row="1" Grid.RowSpan="8" Grid.Column="4" BorderThickness="1" BorderBrush="Blue">
+        <Canvas>
+            <Image Source="{Binding ElementImgPath}"></Image>
+            <Image Source="{Binding ImagePath}"></Image>
+        </Canvas>
+        </Border>
     </Grid>
 </Window>
