@@ -13,7 +13,7 @@ namespace JuWaOh
         private String _cardTypeImgPath;
         private String _title;
         private String _elementImgPath;
-        private Int16 _tribute;
+        private Int16 _level;
         private String _imagePath;
         private String _description;
         private Int32 _atk;
@@ -49,13 +49,13 @@ namespace JuWaOh
             }
         }
 
-        public Int16 Tribute
+        public Int16 Level
         {
-            get { return _tribute; }
+            get { return _level; }
             set
             {
-                _tribute = value;
-                OnPropertyChanged("Tribute");
+                _level = value;
+                OnPropertyChanged("Level");
             }
         }
 

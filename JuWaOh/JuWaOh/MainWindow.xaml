@@ -69,8 +69,9 @@
             <!--ComboBoxItems elements generated in code-->
         </ComboBox>
         <!--slider min and max values added from config file-->
-        <Slider Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" IsSnapToTickEnabled="True"></Slider>
+        <Slider ToolTip="{Binding Level}" Value="{Binding Level}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" IsSnapToTickEnabled="True"></Slider>
         <Button x:Name="loadPictureBtn" Grid.Row="5" Grid.Column="1" Content="load" Click="loadPictureBtn_Click"></Button>
+        <TextBlock Text="{Binding ImagePath, Mode=OneWay}" ToolTip="{Binding ImagePath, Mode=OneWay}" Grid.Row="5" Grid.Column="2"></TextBlock>
         <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
         <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" AcceptsReturn="True" TextWrapping="Wrap"/>
         <TextBox Grid.Row="8" Grid.Column="1"></TextBox>
@@ -79,10 +80,10 @@
         <GridSplitter Grid.Row="1" Grid.Column="3" Grid.RowSpan="8" Width="5" HorizontalAlignment="Stretch"/>
         <Border Margin="5" Width="200" Height="340" Grid.Row="1" Grid.RowSpan="10" Grid.Column="4" BorderThickness="1" BorderBrush="Blue">
             <Canvas>
-            <Image Source="{Binding CardTypeImgPath}"></Image>
-            <Image Source="{Binding ElementImgPath}"></Image>
-            <Image Source="{Binding ImagePath}"></Image>
-            <TextBlock Text="{Binding Title}"></TextBlock>
+            <Image Source="{Binding CardTypeImgPath, Mode=OneWay}"></Image>
+            <Image Source="{Binding ElementImgPath, Mode=OneWay}"></Image>
+            <Image Source="{Binding ImagePath, Mode=OneWay}"></Image>
+            <TextBlock Text="{Binding Title, Mode=OneWay}"></TextBlock>
         </Canvas>
         </Border>
     </Grid>
