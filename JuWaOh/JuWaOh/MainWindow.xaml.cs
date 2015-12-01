@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,21 +15,49 @@ namespace JuWaOh
     {
         public MainWindow()
         {
-            //instantiate before drawing the window because of Bindings
-            this.card = new Card();
+
 
             InitializeComponent();
+            InitializeView();
+        }
+
+        private void InitializeView()
+        {
+            //instantiate the main card
+            this.card = new Card();
 
             //root scope for bindings
             this.DataContext = this.card;
-            elementComboBox.ItemsSource = createOptionsFromSettings();
-            //set a default selection
+            //add options to dropdowns
+            elementComboBox.ItemsSource = LoadElementOptionsFromSettings();
+            cardTypeComboBox.ItemsSource = LoadCardTypeOptionsFromSettings();
+            //set default selections
             elementComboBox.SelectedIndex = 0;
+            cardTypeComboBox.SelectedIndex = 0;
+        }
+
+        //what is better? IEnumerable or List<ComboBoxItem>
+        private IEnumerable LoadCardTypeOptionsFromSettings()
+        {
+            List<ComboBoxItem> options = new List<ComboBoxItem>();
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(Properties.Settings.Default.cardtypes);
+            XmlNodeList cardtypes = xml.SelectNodes("cardtypes/cardtype");
+            //create ComboBoxItems for every <cardtype> node
+            foreach (XmlNode cardtype in cardtypes)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = cardtype.InnerText;
+                item.Tag = cardtype.Attributes["imgPath"];
+                options.Add(item);
+            }
+            return options;
         }
 
         private Card card;
 
-        private List<ComboBoxItem> createOptionsFromSettings()
+        //creates ComboBoxItem List from XmlNodes in Settings
+        private List<ComboBoxItem> LoadElementOptionsFromSettings()
         {
             List<ComboBoxItem> options = new List<ComboBoxItem>();
             XmlDocument xml = new XmlDocument();
@@ -57,9 +86,25 @@ namespace JuWaOh
 
             if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //update the Card.imgSource
+                //update the Card.imgSource with the filepath provided by the fileDialog
                 this.card.ImagePath = fileDialog.FileName;
             }
+        }
+
+        //The Card Background gets updated using the image path stored in the ComboBoxItem's Tag property.
+        private void cardTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //no e.AddedItems[0].Tag.Value in C#?
+            ComboBoxItem senderItem = e.AddedItems[0] as ComboBoxItem;
+            XmlAttribute senderItemAttribute = senderItem.Tag as XmlAttribute;
+            card.CardTypeImgPath = senderItemAttribute.Value;
+        }
+
+        private void elementComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem senderItem = e.AddedItems[0] as ComboBoxItem;
+            XmlAttribute senderItemAttribute = senderItem.Tag as XmlAttribute;
+            card.ElementImgPath = senderItemAttribute.Value;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace JuWaOh
     //implements INotifyPropertyChanged to get Bindings working for custom classes
     public class Card : INotifyPropertyChanged
     {
-        private String _cardType;
+        private String _cardTypeImgPath;
         private String _title;
         private String _elementImgPath;
         private Int16 _tribute;
@@ -21,13 +21,13 @@ namespace JuWaOh
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public String CardType
+        public String CardTypeImgPath
         {
-            get { return _cardType; }
+            get { return _cardTypeImgPath; }
             set
             {
-                _cardType = value;
-                OnPropertyChanged("CardType");
+                _cardTypeImgPath = value;
+                OnPropertyChanged("CardTypeImgPath");
             }
         }
 
@@ -45,7 +45,7 @@ namespace JuWaOh
             set
             {
                 _elementImgPath = value;
-                OnPropertyChanged("Principle");
+                OnPropertyChanged("ElementImgPath");
             }
         }
 
@@ -99,7 +99,7 @@ namespace JuWaOh
         public Card() { }
         public Card(String cardType, String title, String principle, String imagePath, String description, Int32 atk, Int32 def)
         {
-            this.CardType = cardType;
+            this.CardTypeImgPath = cardType;
             this.Title = title;
             this.ElementImgPath = principle;
             this.ImagePath = imagePath;

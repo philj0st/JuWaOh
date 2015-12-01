@@ -4,9 +4,17 @@
   <Settings>
     <Setting Name="elements" Type="System.String" Scope="User">
       <Value Profile="(Default)">&lt;elements&gt;
-	&lt;element imgPath="asset/elements/nature.png"&gt;Nature&lt;/element&gt;
-	&lt;element imgPath="asset/elements/participation.png"&gt;Participation&lt;/element&gt;
+	&lt;element imgPath="assets/elements/nature.png"&gt;Nature&lt;/element&gt;
+	&lt;element imgPath="assets/elements/participation.png"&gt;Participation&lt;/element&gt;
 &lt;/elements&gt;</Value>
+    </Setting>
+    <Setting Name="cardtypes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;cardtypes&gt;
+	&lt;cardtype imgPath="assets/cardtypes/normal.png"&gt;Normal&lt;/cardtype&gt;
+	&lt;cardtype imgPath="assets/cardtypes/effect.png"&gt;Effect&lt;/cardtype&gt;
+&lt;cardtype imgPath="assets/cardtypes/spell.png"&gt;Spell&lt;/cardtype&gt;
+&lt;cardtype imgPath="assets/cardtypes/trap.png"&gt;Trap&lt;/cardtype&gt;
+&lt;/cardtypes&gt;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

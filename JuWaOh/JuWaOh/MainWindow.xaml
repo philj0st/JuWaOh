@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JuWaOh"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="JuWaOh" Width="500" Height="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" x:Name="dockPanel" VerticalAlignment="Top">
             <Menu DockPanel.Dock="Top">
@@ -60,11 +61,11 @@
         <!-- Labels end
         ******************
         Controls Start -->
-        <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+        <ComboBox x:Name="cardTypeComboBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" SelectionChanged="cardTypeComboBox_SelectionChanged">
             <!--ComboBoxItems cardType generated in code-->
         </ComboBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
-        <ComboBox x:Name="elementComboBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+        <TextBox Text="{Binding Title}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        <ComboBox x:Name="elementComboBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" SelectionChanged="elementComboBox_SelectionChanged">
             <!--ComboBoxItems elements generated in code-->
         </ComboBox>
         <!--slider min and max values added from config file-->
@@ -76,10 +77,12 @@
         <TextBox Grid.Row="8" Grid.Column="2"></TextBox>
         <!--{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=RowDefinitions.Count, Mode=OneWay} to bind them dynamically-->
         <GridSplitter Grid.Row="1" Grid.Column="3" Grid.RowSpan="8" Width="5" HorizontalAlignment="Stretch"/>
-        <Border Width="200" Height="200" Grid.Row="1" Grid.RowSpan="8" Grid.Column="4" BorderThickness="1" BorderBrush="Blue">
-        <Canvas>
+        <Border Margin="5" Width="200" Height="340" Grid.Row="1" Grid.RowSpan="10" Grid.Column="4" BorderThickness="1" BorderBrush="Blue">
+            <Canvas>
+            <Image Source="{Binding CardTypeImgPath}"></Image>
             <Image Source="{Binding ElementImgPath}"></Image>
             <Image Source="{Binding ImagePath}"></Image>
+            <TextBlock Text="{Binding Title}"></TextBlock>
         </Canvas>
         </Border>
     </Grid>

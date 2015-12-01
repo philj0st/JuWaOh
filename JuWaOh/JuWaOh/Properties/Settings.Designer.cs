@@ -25,15 +25,32 @@ namespace JuWaOh.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<elements>\r\n\t<element imgPath=\"asset/elements/nature.png\">Nature</element>\r\n\t<ele" +
-            "ment imgPath=\"asset/elements/participation.png\">Participation</element>\r\n</eleme" +
-            "nts>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<elements>\r\n\t<element imgPath=\"assets/elements/nature.png\">Nature</element>\r\n\t<el" +
+            "ement imgPath=\"assets/elements/participation.png\">Participation</element>\r\n</ele" +
+            "ments>")]
         public string elements {
             get {
                 return ((string)(this["elements"]));
             }
             set {
                 this["elements"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<cardtypes>
+	<cardtype imgPath=""assets/cardtypes/normal.png"">Normal</cardtype>
+	<cardtype imgPath=""assets/cardtypes/effect.png"">Effect</cardtype>
+<cardtype imgPath=""assets/cardtypes/spell.png"">Spell</cardtype>
+<cardtype imgPath=""assets/cardtypes/trap.png"">Trap</cardtype>
+</cardtypes>")]
+        public string cardtypes {
+            get {
+                return ((string)(this["cardtypes"]));
+            }
+            set {
+                this["cardtypes"] = value;
             }
         }
     }

@@ -108,6 +108,12 @@
   <ItemGroup>
     <Folder Include="System\Windows\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\cardtypes\normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\elements\nature.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
